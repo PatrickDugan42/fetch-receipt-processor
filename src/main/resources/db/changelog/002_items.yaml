@@ -1,0 +1,41 @@
+databaseChangeLog:
+  - changeSet:
+      id: 002
+      author: patrick_dugan
+      changes:
+        - createTable:
+            tableName: items
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: purchase_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+              - column:
+                  name: short_description
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: price
+                  type: decimal(10,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: points
+                  type: decimal(10,2)
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: items
+            baseColumnNames: purchase_id
+            referencedTableName: purchases
+            referencedColumnNames: id
+            constraintName: fk_items_purchases
+            onDelete: CASCADE
