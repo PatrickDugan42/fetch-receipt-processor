@@ -3,7 +3,7 @@ spring:
     name: fetch-receipt-processor
 
   datasource:
-    url: jdbc:h2:./data/dev_db;AUTO_SERVER=TRUE;AUTO_SERVER_PORT=9092
+    url: jdbc:h2:mem:dev_db
     driver-class-name: org.h2.Driver
   h2:
     console:
