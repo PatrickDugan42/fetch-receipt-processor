@@ -32,7 +32,7 @@ public class PurchaseServiceTest {
         items.add(new ProcessItem("Doritos Nacho Cheese", new BigDecimal("3.35")));
         items.add(new ProcessItem("   Klarbrunn 12-PK 12 FL OZ  ", new BigDecimal("12.00")));
 
-        ProcessRequest receipt = new ProcessRequest("Target", "2022-01-01", "13:01", items, new BigDecimal("35.55"));
+        ProcessRequest receipt = new ProcessRequest("Target", "2022-01-01", "13:01", items, "35.55");
         Purchase purchase = uut.processReceipt(receipt);
         assertEquals(28, purchase.getPoints());
 
@@ -43,7 +43,7 @@ public class PurchaseServiceTest {
         items.add(new ProcessItem("Gatorade", new BigDecimal("2.25")));
         items.add(new ProcessItem("Gatorade", new BigDecimal("2.25")));
 
-        receipt = new ProcessRequest("M&M Corner Market", "2022-03-20", "14:33", items, new BigDecimal("9.00"));
+        receipt = new ProcessRequest("M&M Corner Market", "2022-03-20", "14:33", items, "9.00");
         purchase = uut.processReceipt(receipt);
         assertEquals(109, purchase.getPoints());
     }
