@@ -4,14 +4,15 @@ import com.dugan.fetchreceiptprocessor.entity.Purchase;
 import com.dugan.fetchreceiptprocessor.service.PurchaseService;
 import com.dugan.fetchreceiptprocessor.web.dto.ProcessRequest;
 import com.dugan.fetchreceiptprocessor.web.dto.ProcessResponse;
+import com.dugan.fetchreceiptprocessor.web.dto.ReceiptPointResponse;
 import jakarta.validation.Valid;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+
+import java.util.UUID;
 
 @RestController
 public class PurchaseController {
@@ -36,4 +37,15 @@ public class PurchaseController {
         return ResponseEntity.status(HttpStatus.OK).headers(headers).body(response);
     }
 
+    @GetMapping(
+            path = "/receipts/{id}/points"
+    )
+    public ResponseEntity<ReceiptPointResponse> getPointsById(@PathVariable UUID id){
+        ReceiptPointResponse response = purchaseService.getPointsByPurchaseId(id);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add(HttpHeaders.CONTENT_TYPE, "application/json");
+
+        return ResponseEntity.status(HttpStatus.OK).headers(headers).body(response);
+    }
 }

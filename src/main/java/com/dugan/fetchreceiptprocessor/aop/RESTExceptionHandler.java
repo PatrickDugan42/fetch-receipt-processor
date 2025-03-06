@@ -27,4 +27,13 @@ public class RESTExceptionHandler {
 
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(PointsNotFoundException.class)
+    public ResponseEntity<Map<String, Object>> handlePointsNotFound(PointsNotFoundException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(Map.of(
+                        "status", 404,
+                        "message", "No receipt found for that ID."
+                ));
+    }
 }
