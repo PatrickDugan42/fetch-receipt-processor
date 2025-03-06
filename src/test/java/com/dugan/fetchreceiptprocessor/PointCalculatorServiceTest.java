@@ -24,8 +24,8 @@ public class PointCalculatorServiceTest {
 
     @Test
     void roundDollarAmountRule() {
-        assertEquals(50, uut.roundDollarAmountRule(new BigDecimal(10.00)));
-        assertEquals(0, uut.roundDollarAmountRule(new BigDecimal(10.11)));
+        assertEquals(50, uut.roundDollarAmountRule(new BigDecimal("10.00")));
+        assertEquals(0, uut.roundDollarAmountRule(new BigDecimal("10.11")));
     }
 
     @Test
