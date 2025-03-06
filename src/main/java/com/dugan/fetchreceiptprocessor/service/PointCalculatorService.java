@@ -61,7 +61,7 @@ public class PointCalculatorService {
 
     // 10 points for time after 2:00 PM and before 4:00 PM
     public Integer timeBetweenTwoAndFourPMRule(String timeString){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("h:mma");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("H:mm");
         LocalTime time = LocalTime.parse(timeString, formatter);
 
         // set up 2 and 4 pm as local time to compare
