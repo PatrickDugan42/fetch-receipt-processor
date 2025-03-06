@@ -64,16 +64,12 @@ public class PointCalculatorServiceTest {
 
     @Test
     void timeBetweenTwoAndFour(){
-        assertEquals(10, uut.timeBetweenTwoAndFourPMRule("3:00PM"));
-        assertEquals(10, uut.timeBetweenTwoAndFourPMRule("3:59PM"));
-        assertEquals(10, uut.timeBetweenTwoAndFourPMRule("2:01PM"));
-        assertEquals(0, uut.timeBetweenTwoAndFourPMRule("2:00PM"));
-        assertEquals(0, uut.timeBetweenTwoAndFourPMRule("4:00PM"));
-        assertEquals(0, uut.timeBetweenTwoAndFourPMRule("4:00AM"));
-
-
-
-
+        assertEquals(10, uut.timeBetweenTwoAndFourPMRule("15:00"));
+        assertEquals(10, uut.timeBetweenTwoAndFourPMRule("15:59"));
+        assertEquals(10, uut.timeBetweenTwoAndFourPMRule("14:01"));
+        assertEquals(0, uut.timeBetweenTwoAndFourPMRule("14:00"));
+        assertEquals(0, uut.timeBetweenTwoAndFourPMRule("16:00"));
+        assertEquals(0, uut.timeBetweenTwoAndFourPMRule("4:00"));
 
     }
 }
