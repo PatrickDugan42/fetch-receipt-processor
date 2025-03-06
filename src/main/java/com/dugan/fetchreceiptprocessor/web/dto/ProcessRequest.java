@@ -15,10 +15,12 @@ public record ProcessRequest(
         @NotNull
         @NotEmpty
         @Description("The date of the purchase printed on the receipt.")
+        @Pattern(regexp = "^(?:\\d{4})-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12][0-9]|3[01])$", message = "The purchaseDate must follow format of YYYY-mm-dd.")
         String purchaseDate,
         @NotNull
         @NotEmpty
         @Description("The time of the purchase printed on the receipt. 24-hour time expected.")
+        @Pattern(regexp = "(?:[0-9]|[01][0-9]|2[0-3]):[0-5][0-9]$", message = "The purchaseTime must follow the format of H:mm.")
         String purchaseTime,
         @Size(min = 1)
         @Description("The purchased items.")
