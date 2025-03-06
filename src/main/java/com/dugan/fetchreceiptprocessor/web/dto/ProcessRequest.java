@@ -25,5 +25,5 @@ public record ProcessRequest(
         @Pattern(regexp = "^\\d+\\.\\d{2}$", message = "The retailer must match the following regexp, ^\\d+\\.\\d{2}$")
         @NotNull
         @NotEmpty
-        BigDecimal total) {
+        String total) {
 }

@@ -4,6 +4,7 @@ import com.dugan.fetchreceiptprocessor.entity.Item;
 import com.dugan.fetchreceiptprocessor.entity.Purchase;
 import com.dugan.fetchreceiptprocessor.web.dto.ProcessRequest;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class PurchaseMapper {
@@ -13,7 +14,7 @@ public class PurchaseMapper {
         purchase.setRetailer(processRequest.retailer());
         purchase.setPurchaseDate(processRequest.purchaseDate());
         purchase.setPurchaseTime(processRequest.purchaseTime());
-        purchase.setTotal(processRequest.total());
+        purchase.setTotal(new BigDecimal(processRequest.total()));
 
         List<Item> items = processRequest.items().stream()
                 .map(processItem ->
