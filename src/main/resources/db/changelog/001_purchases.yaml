@@ -33,6 +33,6 @@ databaseChangeLog:
                     nullable: false
               - column:
                   name: points
-                  type: decimal(10,2)
+                  type: integer
                   constraints:
                     nullable: false

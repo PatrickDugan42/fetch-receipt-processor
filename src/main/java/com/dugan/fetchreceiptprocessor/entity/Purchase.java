@@ -18,7 +18,7 @@ public class Purchase {
     private String purchaseDate;
     private String purchaseTime;
     private BigDecimal total;
-    private BigDecimal points;
+    private Integer points;
 
     @OneToMany(mappedBy = "purchase", cascade = CascadeType.ALL)
     private List<Item> items;
@@ -63,11 +63,11 @@ public class Purchase {
         this.total = total;
     }
 
-    public BigDecimal getPoints() {
+    public Integer getPoints() {
         return points;
     }
 
-    public void setPoints(BigDecimal points) {
+    public void setPoints(Integer points) {
         this.points = points;
     }
 

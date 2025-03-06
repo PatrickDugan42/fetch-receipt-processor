@@ -18,7 +18,15 @@ public class Item {
 
     private String shortDescription;
     private BigDecimal price;
-    private BigDecimal points;
+
+    public Item(){}
+
+    public Item(Long id, Purchase purchase, String shortDescription, BigDecimal price) {
+        this.id = id;
+        this.purchase = purchase;
+        this.shortDescription = shortDescription;
+        this.price = price;
+    }
 
     public Long getId() {
         return id;
@@ -52,11 +60,4 @@ public class Item {
         this.price = price;
     }
 
-    public BigDecimal getPoints() {
-        return points;
-    }
-
-    public void setPoints(BigDecimal points) {
-        this.points = points;
-    }
 }
