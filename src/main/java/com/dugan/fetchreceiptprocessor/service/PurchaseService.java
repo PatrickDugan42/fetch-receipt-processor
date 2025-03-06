@@ -5,8 +5,6 @@ import com.dugan.fetchreceiptprocessor.entity.Purchase;
 import com.dugan.fetchreceiptprocessor.jpa.PurchaseRepository;
 import com.dugan.fetchreceiptprocessor.mapper.PurchaseMapper;
 import com.dugan.fetchreceiptprocessor.web.dto.ProcessRequest;
-import com.dugan.fetchreceiptprocessor.web.dto.ProcessResponse;
-import com.dugan.fetchreceiptprocessor.web.dto.ReceiptPointResponse;
 import org.springframework.stereotype.Service;
 
 @Service

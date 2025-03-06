@@ -5,7 +5,6 @@ import com.dugan.fetchreceiptprocessor.service.PurchaseService;
 import com.dugan.fetchreceiptprocessor.web.dto.ProcessRequest;
 import com.dugan.fetchreceiptprocessor.web.dto.ProcessResponse;
 import jakarta.validation.Valid;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

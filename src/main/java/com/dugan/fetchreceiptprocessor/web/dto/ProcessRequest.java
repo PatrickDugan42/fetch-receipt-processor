@@ -1,12 +1,8 @@
 package com.dugan.fetchreceiptprocessor.web.dto;
 
-
-
-
 import jakarta.validation.constraints.*;
 import org.springframework.context.annotation.Description;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 public record ProcessRequest(
