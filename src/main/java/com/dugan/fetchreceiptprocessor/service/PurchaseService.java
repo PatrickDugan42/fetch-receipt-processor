@@ -5,6 +5,7 @@ import com.dugan.fetchreceiptprocessor.entity.Purchase;
 import com.dugan.fetchreceiptprocessor.jpa.PurchaseRepository;
 import com.dugan.fetchreceiptprocessor.mapper.PurchaseMapper;
 import com.dugan.fetchreceiptprocessor.web.dto.ProcessRequest;
+import com.dugan.fetchreceiptprocessor.web.dto.ProcessResponse;
 import com.dugan.fetchreceiptprocessor.web.dto.ReceiptPointResponse;
 import org.springframework.stereotype.Service;
 
@@ -22,9 +23,7 @@ public class PurchaseService {
 
     public Purchase processReceipt(ProcessRequest processRequest){
         Purchase purchase = PurchaseMapper.fromProcessRequest(processRequest);
-
         applyPointRulesToPurchaseReceipt(purchase);
-
         purchaseRepository.save(purchase);
         return purchase;
     }
@@ -32,8 +31,7 @@ public class PurchaseService {
     private void applyPointRulesToPurchaseReceipt(Purchase purchase){
         Integer pointsTotal = 0;
 
-        // int value cast ok as retailer name validated at dto level to 255 max characters
-        pointsTotal += pointCalculatorService.alphaNumericRetailerRule(purchase.getRetailer()).intValue();
+        pointsTotal += pointCalculatorService.alphaNumericRetailerRule(purchase.getRetailer());
         pointsTotal += pointCalculatorService.roundDollarAmountRule(purchase.getTotal());
         pointsTotal += pointCalculatorService.multipleOfAQuarterRule(purchase.getTotal());
         pointsTotal += pointCalculatorService.fiveForEveryTwoItemsRule(purchase.getItems().size());

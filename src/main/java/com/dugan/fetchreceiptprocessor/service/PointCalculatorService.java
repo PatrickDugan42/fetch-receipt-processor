@@ -14,8 +14,8 @@ public class PointCalculatorService {
     public PointCalculatorService(){}
 
     // a point for each alphaNumeric character
-    public Long alphaNumericRetailerRule(String retailer){
-        return retailer.chars().filter(Character::isLetterOrDigit).count();
+    public Integer alphaNumericRetailerRule(String retailer){
+        return (int) retailer.chars().filter(Character::isLetterOrDigit).count();
     }
 
     // 50 points if a round dollar amount
