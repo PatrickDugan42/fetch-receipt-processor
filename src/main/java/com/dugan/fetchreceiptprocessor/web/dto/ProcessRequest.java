@@ -25,7 +25,7 @@ public record ProcessRequest(
         @Size(min = 1)
         @Description("The purchased items.")
         List<ProcessItem> items,
-        @Pattern(regexp = "^\\d+\\.\\d{2}$", message = "The retailer must match the following regexp, ^\\d+\\.\\d{2}$")
+        @Pattern(regexp = "^\\d+\\.\\d{2}$", message = "The total cost must match the following regexp, ^\\d+\\.\\d{2}$")
         @NotNull
         @NotEmpty
         @Description("The total amount paid on the receipt.")
