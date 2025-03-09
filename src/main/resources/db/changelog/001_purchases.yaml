@@ -1,0 +1,38 @@
+databaseChangeLog:
+  - changeSet:
+      id: 001
+      author: patrick_dugan
+      changes:
+        - createTable:
+            tableName: purchases
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: retailer
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: purchase_date
+                  type: date
+                  constraints:
+                    nullable: false
+              - column:
+                  name: purchase_time
+                  type: time
+                  constraints:
+                    nullable: false
+              - column:
+                  name: total
+                  type: decimal(10,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: points
+                  type: integer
+                  constraints:
+                    nullable: false
