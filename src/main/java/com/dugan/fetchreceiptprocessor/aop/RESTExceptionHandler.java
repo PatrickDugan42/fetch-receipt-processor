@@ -16,6 +16,7 @@ import java.util.UUID;
 @RestControllerAdvice
 public class RESTExceptionHandler {
 
+    // Handles validation exception, adds error message defined in dto validation
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String, Object>> handleValidationExceptions(MethodArgumentNotValidException ex) {
         Map<String, Object> response = new HashMap<>();
@@ -41,12 +42,14 @@ public class RESTExceptionHandler {
     }
 
     //Handle status and message when the /receipts/{id}/points passed id is not a UUID
+    // Without this handling an unwanted 500 is thrown when a non UUID is used
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
-    public ResponseEntity<Map<String, Object>> handleInvalidTypeForPathParameter(MethodArgumentTypeMismatchException exception,
+    public ResponseEntity<Map<String, Object>> handleInvalidUUIDTypeForPathParameter(MethodArgumentTypeMismatchException exception,
                                                                                  HttpServletRequest request) {
+
+        // capture path parameter using [^/]+ and validate it is UUID or not
         if(request.getRequestURI().matches("^/receipts/[^/]+/points$")){
             String[] split = request.getRequestURI().split("/");
-            System.out.println(split.toString());
             if(!isValidUUID(split[2])){
                 return ResponseEntity.status(HttpStatus.NOT_FOUND)
                         .body(Map.of(
@@ -56,6 +59,7 @@ public class RESTExceptionHandler {
             }
         }
 
+        //if not a UUID format error throw possible unhandled exception
         throw exception;
     }
 
